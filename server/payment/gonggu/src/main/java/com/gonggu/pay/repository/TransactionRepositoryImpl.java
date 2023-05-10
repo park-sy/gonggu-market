@@ -34,22 +34,32 @@ public class TransactionRepositoryImpl implements TransactionRepositoryCustom{
     }
 
     private OrderSpecifier<?> sortOrder(Integer order){
-        if(order == null) return transaction.id.desc();
-        else if(order == 1) return transaction.amount.desc();
+        if(order == null) {
+            return transaction.id.desc();
+        } else if(order == 1) {
+            return transaction.amount.desc();
+        }
         return transaction.id.desc();
     }
     private BooleanExpression filter(User user, Integer filter){
-        if(filter == null) return transaction.from.eq(user).or(transaction.to.eq(user));
-        else if(filter == 1) return transaction.from.eq(user);
+        if(filter == null) {
+            return transaction.from.eq(user).or(transaction.to.eq(user));
+        } else if(filter == 1) {
+            return transaction.from.eq(user);
+        }
         return transaction.to.eq(user);
     }
     private BooleanExpression goeDate(String date){
-        if(date == null) return null;
+        if(date == null) {
+            return null;
+        }
         LocalDateTime start = LocalDateTime.parse(date);
         return transaction.date.goe(start);
     }
     private BooleanExpression loeDate(String date){
-        if(date == null) return null;
+        if(date == null) {
+            return null;
+        }
         LocalDateTime end = LocalDateTime.parse(date);
         return transaction.date.loe(end);
     }
