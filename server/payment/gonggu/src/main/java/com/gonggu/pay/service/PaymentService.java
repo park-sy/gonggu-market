@@ -15,7 +15,6 @@ import com.gonggu.pay.repository.UserRepository;
 import com.gonggu.pay.request.PaymentCharge;
 import com.gonggu.pay.request.RemitRequest;
 import com.gonggu.pay.request.TransactionRequest;
-import com.gonggu.pay.request.UserTemp;
 import com.gonggu.pay.response.PaymentInfo;
 import com.gonggu.pay.response.TransactionResponse;
 import lombok.RequiredArgsConstructor;
@@ -39,11 +38,10 @@ public class PaymentService {
     private final TransactionRepository transactionRepository;
     private final UserRepository userRepository;
 
+    @Transactional(readOnly = true)
     public PaymentInfo getInfo(User user) {
-        Payment payment = paymentRepository.findByUser(user).orElseThrow(() -> new PaymentNotFound("지갑을 생성해주세요."));
-        PaymentInfo paymentInfo = new PaymentInfo(payment);
-
-        return paymentInfo;
+        return new PaymentInfo(paymentRepository.findByUser(user)
+                .orElseThrow(() -> new PaymentNotFound("지갑을 생성해주세요.")));
     }
 
     public void charge(PaymentCharge paymentCharge, User user) {
@@ -53,7 +51,6 @@ public class PaymentService {
         Payment payment = paymentRepository.findByUser(user).orElseThrow(PaymentNotFound::new);
         account.minusBalance(paymentCharge.getRequestCoin());
         payment.plusBalance(paymentCharge.getRequestCoin());
-
     }
 
     public void discharge(PaymentCharge paymentCharge, User user) {
@@ -65,7 +62,6 @@ public class PaymentService {
         account.plusBalance(paymentCharge.getRequestCoin());
     }
 
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
     public void remit(User from, RemitRequest request) {
         User to = userRepository.findByNickname(request.getTo()).orElseThrow(UserNotFound::new);
         Payment fromPayment = paymentRepository.findByUser(from).orElseThrow(PaymentNotFound::new);
@@ -87,6 +83,7 @@ public class PaymentService {
         transactionRepository.save(transaction);
     }
 
+    @Transactional(readOnly = true)
     public List<TransactionResponse> getMyTransaction(TransactionRequest transactionRequest, User user){
         return transactionRepository.getList(user, transactionRequest).stream()
                 .map(TransactionResponse::new).collect(Collectors.toList());
