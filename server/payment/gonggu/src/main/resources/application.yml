@@ -54,7 +54,7 @@ spring:
       max-request-size: 10MB
       location: c:\\temp\\upload
   kafka:
-    bootstrap-servers: 13.209.40.90:9092
+    bootstrap-servers: localhost:9092
     consumer:
       group-id: gonggu
       auto-offset-reset: earliest

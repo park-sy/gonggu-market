@@ -7,7 +7,7 @@
 |     이름     | 역할                                                           | 사용 기술                                     |
 | :----------: | :------------------------------------------------------------- | :-------------------------------------------- |
 |   jsc9988    | 회원가입, 로그인, 회원 관리 백엔드 개발 및 Spring dockerize    |                                               |
-|   park-sy    | 공동구매모집,페이기능백엔드개발, Spring dockerize, DevOps(AWS) | Java11, Springboot, MySQL, Kafka            |
+|   park-sy    | 공동구매모집,페이기능백엔드개발, Spring dockerize, Kafka server 구축, DevOps(AWS) | Java11, Springboot, MySQL, Kafka  |
 | JaeHyun Shin | 프론트엔드 개발, 푸시 서버 개발, PWA 구현, Mock server 구축    |                                               |
 |    empodi    | 채팅 컨텍스트 백엔드 및 프론트엔드, Node.js dockerize          | Node.js, MySQL, Socket.io, Redis, Vue3, Kafka |
 
@@ -46,7 +46,7 @@
 
 ### ERD
 
-![image](https://user-images.githubusercontent.com/53611554/208304882-7a6db0a6-ba7b-4a96-9fe1-61366304ca7b.png)
+![image](https://user-images.githubusercontent.com/53611554/209473276-621894c4-1285-4b81-954d-18d9ce78084f.png)
 
 ## 프로젝트 결과
 
@@ -62,10 +62,7 @@
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/53611554/209445242-dd33b67a-2aa6-4b08-a094-4f338e9eec1b.gif)
 
 #### 게시글 생성
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/53611554/209445247-9eabaa4a-8b36-42ac-999c-0cb554b2d265.gif)
-
-#### 이미지 업로드
-![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/53611554/209445250-b5138e13-8c96-40ea-be46-d613c9991eef.gif)
+![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/53611554/209574854-fea9370f-2d62-4318-a940-3f0f17894aff.gif)
 
 #### 공구 참여
 ![ezgif com-gif-maker (4)](https://user-images.githubusercontent.com/53611554/209445321-39764a96-de1e-4250-bfd9-20a27a89e4d9.gif)
@@ -74,14 +71,11 @@
 ![KakaoTalk_20221225_022636060](https://user-images.githubusercontent.com/53611554/209446068-c9a6c52e-a3a6-4ee7-9e6d-1631355c3c7f.gif)
 
 #### 채팅
-![KakaoTalk_20221225_015726667_07](https://user-images.githubusercontent.com/53611554/209445286-d3b08aff-58e0-4aa7-a7fe-e0d0d8fdd8ff.gif)
+![ezgif com-gif-maker (8)](https://user-images.githubusercontent.com/53611554/209574811-2457569b-8eca-4e1f-9733-8c340f80d8d9.gif)
 
-#### 송금
-![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/53611554/209445296-4995c61a-f84e-42e8-9751-3802f01aebdf.gif)
+#### 송금 및 송금 내역
+![ezgif com-gif-maker (9)](https://user-images.githubusercontent.com/53611554/209574802-27a9b125-fb4c-45c9-b00d-6b594eb1019f.gif)
 
-#### 송금 내역
-![KakaoTalk_20221225_015726667_04](https://user-images.githubusercontent.com/53611554/209445359-d68843e9-cd16-4e9e-b0ac-c75131029ea4.gif)
-![KakaoTalk_20221225_015726667_05](https://user-images.githubusercontent.com/53611554/209445370-fc041b01-7399-4b2f-87b7-3062e53baa4b.gif)
 
 
 #### PWA 검증
@@ -98,4 +92,15 @@
 - 무중단 배포와, 확장성을 검증하기 위해 부하 테스트 진행
 - 테스트 시작과 동시에 서버 업데이트를 진행하였고 02:42에 서버 업데이트가 완료되며 무중단 배포 성공
 - 이후 scale-out 성공하여 서버 3대까지 증가
-- 독립성 내용 추가 예정
+- 독립성 테스트(deal 서버 내린 후 진행)
+
+![ezgif com-gif-maker (5)](https://user-images.githubusercontent.com/53611554/209574251-a4f8ad8f-6fcd-49ad-a051-6fd7473bb037.gif)
+
+- 채팅 서버 정상 동작 확인
+
+![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/53611554/209574271-09ae90ed-4deb-46e6-ba3b-d73252136ccc.gif)
+
+- 페이 서버 정상 동작 확인
+
+
+
