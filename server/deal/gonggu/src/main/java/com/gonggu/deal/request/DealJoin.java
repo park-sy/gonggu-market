@@ -3,9 +3,7 @@ package com.gonggu.deal.request;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.*;
 
-@Setter
 @Getter
-@ToString
 @Builder
 public class DealJoin {
 
